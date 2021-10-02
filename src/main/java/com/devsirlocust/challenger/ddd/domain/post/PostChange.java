@@ -1,12 +1,10 @@
 package com.devsirlocust.challenger.ddd.domain.post;
 
 import co.com.sofka.domain.generic.EventChange;
-import com.devsirlocust.challenger.ddd.domain.post.event.BodyAdded;
-import com.devsirlocust.challenger.ddd.domain.post.event.CommentAdded;
-import com.devsirlocust.challenger.ddd.domain.post.event.ContentOfBodyUpgraded;
-import com.devsirlocust.challenger.ddd.domain.post.event.PostCreated;
+import com.devsirlocust.challenger.ddd.domain.post.event.*;
 import com.devsirlocust.challenger.ddd.domain.post.values.entity.Body;
 import com.devsirlocust.challenger.ddd.domain.post.values.entity.Comment;
+import com.devsirlocust.challenger.ddd.domain.post.values.entity.Link;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -38,6 +36,14 @@ public class PostChange extends EventChange {
                         event.getCommentId(),
                         event.getTime(),
                         event.getText()
+                ));
+            });
+
+            apply((LinkAdded event) -> {
+                post.links.add(new Link(
+                        event.getLinkIdId(),
+                        event.getTitleLink(),
+                        event.getUrl()
                 ));
             });
 

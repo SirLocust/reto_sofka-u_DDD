@@ -25,7 +25,7 @@ public class LinkAdded extends DomainEvent{
         this.url = url;
     }
 
-    public LinkId getBodyId(){
+    public LinkId getLinkIdId(){
         return this.linkId;
     }
 
